@@ -1,27 +1,28 @@
 <script setup>
+  import { useBMIStore } from '../stores/BMIStore.js'
+  import { ref } from 'vue'
 
-import { ref } from 'vue'
+  const BMICalculationStore = useBMIStore()
 
-const emit = defineEmits(['stats-entered'])
+  const heightInput = ref('')
+  const weightInput = ref('')
 
-const height = ref('')
-const weight = ref('')
+  function inputEntered(){
+    BMICalculationStore.BMICalculation(heightInput, weightInput)
+  }
 
-const calculateBMI = () => {
-    emit('stats-entered', height.value, weight.value)
-}
 </script>
 
 <template>
   <div id="BMI-Form">
     <div id="input">
         <label for="Height">Height:</label>
-        <input v-model="height" type="number" id="Height" style="margin-left:20px">
+        <input v-model="heightInput" type="number" id="Height" style="margin-left:20px">
         <br>
         <label for="Weight">Weight:</label>
-        <input v-model="weight" type="number" id="Weight" style="margin-left:15px">
+        <input v-model="weightInput" type="number" id="Weight" style="margin-left:15px">
     </div>
-    <button v-on:click="calculateBMI">Calculate</button>
+    <button v-on:click="inputEntered">Calculate</button>
   </div>
 </template>
 

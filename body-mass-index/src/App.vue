@@ -1,13 +1,10 @@
 <script setup>
 import BodyMassIndexForm from './components/BodyMassIndexForm.vue'
+import { useBMIStore } from './stores/BMIStore';
+import { storeToRefs } from 'pinia';
 
-import { ref } from 'vue'
-
-const bmi = ref('')
-
-const BMICalculation = (heightInput, weightInput) => {
-  bmi.value = (weightInput / (heightInput * heightInput)).toFixed(2)
-}//takes two parameters to find the bmi value
+const BMICalculationStore = useBMIStore()
+const { bmi } = storeToRefs(BMICalculationStore)
 
 </script>
 
@@ -15,9 +12,7 @@ const BMICalculation = (heightInput, weightInput) => {
   <div id="app-component">
     <h1>Body Mass Index Calculator</h1>
 
-    <BodyMassIndexForm
-    v-on:stats-entered="BMICalculation"
-    ></BodyMassIndexForm>
+    <BodyMassIndexForm></BodyMassIndexForm>
     <!--The above connects to the child component to receive the data and send data if necessary.
     When the event 'stats-entered' is emitted it sends the data to BMICalculation function to get BMI-->
 
