@@ -9,7 +9,7 @@
 
   function inputEntered(){
     BMICalculationStore.BMICalculation(heightInput, weightInput)
-  }
+  }//after button is clicked this function activates connecting it to BMIStore's function to calculate bmi
 
 </script>
 

@@ -4,7 +4,7 @@ import { useBMIStore } from './stores/BMIStore';
 import { storeToRefs } from 'pinia';
 
 const BMICalculationStore = useBMIStore()
-const { bmi } = storeToRefs(BMICalculationStore)
+const { bmi } = storeToRefs(BMICalculationStore)//Grabs bmi value to display
 
 </script>
 
@@ -17,7 +17,7 @@ const { bmi } = storeToRefs(BMICalculationStore)
     When the event 'stats-entered' is emitted it sends the data to BMICalculation function to get BMI-->
 
     <div id="bmi-style">
-      BMI is: {{ bmi }}
+      BMI is: {{ bmi }}<!--Display's bmi-->
     </div>
   </div>
 </template>
